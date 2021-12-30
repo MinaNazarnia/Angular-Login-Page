@@ -1,0 +1,56 @@
+@font-face {
+    font-family: headerFont;
+    src: url(../assets/CassandraPersonalUseRegular.ttf);
+}
+
+@font-face {
+    font-family: paragraphFont;
+    src: url(../assets/VujahdayScript-Regular.ttf);
+}
+
+.hSelectedFont{
+    font-family: headerFont;
+    font-weight: bold;
+}
+
+.pSelectedFont{
+    font-family: paragraphFont;
+    font-size: xx-large;
+}
+
+.scrollSetting{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.backgroundImage{
+    background-image: url(../assets/lwZNOpK.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+.image{
+    border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+  
+.fa-twitter {
+  background: #55ACEE;
+ color: white;
+}
+  
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
