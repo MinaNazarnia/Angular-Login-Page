@@ -7,15 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  username: string = "";
+  x!: string;
+
   constructor() { }
 
   ngOnInit(): void {
-
+    this.getUserName();
   }
 
-  onLoad() {
-    let userData = JSON.parse(localStorage.getItem('user')!);
-    console.log(userData);
+  getUserName() {
+    this.username = JSON.parse(localStorage.getItem('username')!);
   }
 
+  getButtonTitle() {
+    return 'click me'
+  }
+
+  y() {
+    console.log(this.x);
+  }
 }
