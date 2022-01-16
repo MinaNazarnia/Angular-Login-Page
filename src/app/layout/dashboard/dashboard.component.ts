@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   username: string = "";
-  x!: string;
+  adminUsername!: string;
+  adminPassword!: string;
+  // x!: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getUserName();
@@ -20,11 +23,32 @@ export class DashboardComponent implements OnInit {
     this.username = JSON.parse(localStorage.getItem('username')!);
   }
 
-  getButtonTitle() {
-    return 'click me'
-  }
+  adminAccess() {
 
-  y() {
-    console.log(this.x);
+    let adminUser = prompt("username");
+
+    if (adminUser == "admin") {
+      this.adminUsername = adminUser;
+      let adminPass = prompt("password");
+      // while (adminPass != "admin") {
+      //   prompt("username");
+      // }
+      if (adminPass == "admin") {
+        this.adminPassword = adminPass;
+        this.router.navigate(['/admin-access']);
+      } else {
+        alert("password is not correct!");
+      }
+    } else {
+      alert("username is not correct!");
+    }
+
+    // getButtonTitle() {
+    //   return 'click me'
+    // }
+
+    // y() {
+    //   console.log(this.x);
+    // }
   }
 }
