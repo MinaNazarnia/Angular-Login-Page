@@ -4,12 +4,12 @@
     background-image:url("../../../assets/5244392.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.5;
     background-size: cover;
 }
 
-.button-opacity-setting{
-    color: white;
-    background-color: rgb(55, 158, 55,1);
-    // opacity: 1;
+.admin-btn{
+    position: absolute;
+    bottom: 20%;
+    float: right;
+    right: 10%;
 }

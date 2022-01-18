@@ -1,8 +1,21 @@
 <div class="container">
-    <h4>users-list</h4>
+
+    <h2 class="pt-2" style="font-weight: 100; font-weight: bold;">users-list</h2>
+    <mat-selection-list #users [multiple]="false" class="list-group">
+        <mat-list-option *ngFor="let user of data" [value]="user" class="text-dark list-group-item"
+            (click)="goToProfile(user.login)">
+            {{user.login}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    <!-- <p>
+        Option selected: {{users.selectedOptions.selected[0]?.value}}
+    </p> -->
+
+    <!-- <h4>users-list</h4>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of data">
             {{item.login}}
         </li>
-    </ul>
+    </ul> -->
 </div>

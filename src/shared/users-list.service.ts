@@ -6,10 +6,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersListService {
 
+  login!: string;
+
   constructor(private httpClient: HttpClient) { }
 
-  public get() {
+  public getAll() {
     return this.httpClient.get("https://api.github.com/users");
   }
 
+  public getById(id: any) {
+    return this.httpClient.get("https://api.github.com/users" + '/' + `${id}`)
+  }
 }

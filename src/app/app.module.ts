@@ -11,6 +11,9 @@ import { NotAuthorizedComponent } from './session/not-authorized/not-authorized.
 import { AuthGuard } from 'src/shared/guards/auth.guard';
 import { AdminAccessComponent } from './layout/admin-access/admin-access.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './layout/profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -18,6 +21,7 @@ const appRoutes: Routes = [
   // { path: 'notAuthorized', component: NotAuthorizedComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'admin-access', component: AdminAccessComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: '', component: AppComponent },
 ]
@@ -29,13 +33,16 @@ const appRoutes: Routes = [
     DashboardComponent,
     SignInComponent,
     AdminAccessComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    MatListModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent]
 })
