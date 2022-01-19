@@ -2,15 +2,24 @@
 
     <h2 class="pt-2" style="font-weight: 100; font-weight: bold;">users-list</h2>
     <mat-selection-list #users [multiple]="false" class="list-group">
-        <mat-list-option *ngFor="let user of data" [value]="user" class="text-dark list-group-item"
-            (click)="goToProfile(user.login)">
+        <mat-list-option *ngFor="let user of data" [value]="user" class="text-dark list-group-item">
             {{user.login}}
         </mat-list-option>
     </mat-selection-list>
 
-    <!-- <p>
+    <p>
         Option selected: {{users.selectedOptions.selected[0]?.value}}
-    </p> -->
+    </p>
+
+    <mat-selection-list #users class="list-group">
+        <mat-list-option *ngFor="let user of data" class="text-dark  list-group-item">
+            {{user.login}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    <p class="text-dark">
+        Options selected: {{users.selectedOptions.selected.length}}
+    </p>
 
     <!-- <h4>users-list</h4>
     <ul class="list-group">
