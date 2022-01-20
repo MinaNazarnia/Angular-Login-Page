@@ -1,8 +1,13 @@
 <div class="container">
 
-    <h2 class="pt-2" style="font-weight: 100; font-weight: bold;">users-list</h2>
+    <div class="nav pt-2 d-flex justify-content-between">
+        <h2 class="justify-content-start" style="font-weight: 100; font-weight: bold;">users-list</h2>
+        <button class="px-2 py-1 btn btn-danger justify-content-end align-items-center"
+            (click)="logOut()">Logout</button>
+    </div>
     <mat-selection-list #users [multiple]="false" class="list-group">
-        <mat-list-option *ngFor="let user of data" [value]="user" class="text-dark list-group-item">
+        <mat-list-option *ngFor="let user of data" [value]="user" class="text-dark list-group-item"
+            (click)="goToProfile(user.login)">
             {{user.login}}
         </mat-list-option>
     </mat-selection-list>

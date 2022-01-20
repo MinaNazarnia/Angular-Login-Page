@@ -57,10 +57,9 @@
                         <input type="password" class="form-control mt-3" placeholder="Password (at least 6 character)"
                             formControlName="password" autocomplete="off">
 
-                        <button type="submit" class="form-control btn btn-success mt-3"
-                            [disabled]="profileForm.invalid">
-                            <a class="text-light text-decoration-none" (click)="onSignin()">
-                                Sign in</a></button>
+                        <button type="submit" class="form-control btn btn-success mt-3" [disabled]="profileForm.invalid"
+                            (click)="onSignin()">
+                            Sign in</button>
 
                     </div>
 
@@ -70,11 +69,11 @@
 
                             <input type="checkbox" formControlName="rememberMe">
 
-                            <label class="form-check-label ps-1">Remeber Me</label>
+                            <label class="form-check-label ps-1" style="font-size: small;">Remeber Me</label>
 
                         </div>
 
-                        <a href="#" class="link-primary mt-2 p-0">Forgot Password?</a>
+                        <a href="#" class="link-primary mt-2 p-0" style="font-size: small;">Forgot Password?</a>
 
                     </div>
 
@@ -87,11 +86,11 @@
 
                 <div class="d-flex justify-content-between mt-4">
 
-                    <a href="www.google.com"><button class="btn btn-lg fa fa-google"></button></a>
+                    <a href="https://www.google.com/account"><button class="btn btn-lg fa fa-google"></button></a>
 
-                    <a href="www.facebook.com"><button class="btn btn-lg fa fa-facebook"></button></a>
+                    <a href="https://www.facebook.com"><button class="btn btn-lg fa fa-facebook"></button></a>
 
-                    <a href="www.twitter.com"><button class="btn btn-lg fa fa-twitter"></button></a>
+                    <a href="https://twitter.com"><button class="btn btn-lg fa fa-twitter"></button></a>
 
                 </div>
 

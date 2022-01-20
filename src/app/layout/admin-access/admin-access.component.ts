@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersListService } from 'src/shared/users-list.service';
-
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
-
+import { UsersService } from 'src/shared/users.service';
 
 @Component({
   selector: 'app-admin-access',
@@ -16,21 +9,24 @@ export interface Section {
 })
 export class AdminAccessComponent implements OnInit {
 
-  data!: any[];
-  // typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  usersList!: string[];
+  data!: any[]
   id!: any;
 
-  constructor(private usersListService: UsersListService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.usersListService.getAll().subscribe(((users: any) => {
+    this.usersService.getAll().subscribe(((users: any) => {
       this.data = users;
     }))
 
   }
 
-  goToProfile(login) {
+  goToProfile(login: any) {
     this.router.navigate(['/profile', login]);
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/sign-in']);
   }
 }

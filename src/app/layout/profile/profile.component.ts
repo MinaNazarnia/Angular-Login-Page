@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsersListService } from 'src/shared/users-list.service';
+import { UsersService } from 'src/shared/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,16 +12,14 @@ export class ProfileComponent implements OnInit {
   userData: any;
   id: any;
 
-  constructor(private route: ActivatedRoute, private usersListService: UsersListService) { }
+  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id');
 
-    this.usersListService.getById(this.id).subscribe(
+    this.usersService.getById(this.id).subscribe(
       user => this.userData = user
     )
-    console.log(this.userData);
-
   }
 }

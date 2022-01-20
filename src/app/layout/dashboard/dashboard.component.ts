@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGuard } from 'src/shared/guards/auth.guard';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, DoCheck {
 
-  username: string = "";
+  enterData: any;
+  enteredTime: any;
   adminUsername!: string;
   adminPassword!: string;
   // x!: string;
@@ -16,39 +18,37 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.getUserName();
+    this.getEnterData();
   }
 
-  getUserName() {
-    this.username = JSON.parse(localStorage.getItem('username')!);
+  ngDoCheck() {
+    let currentTime: any = new Date();
+
+    if (currentTime - (this.enteredTime) > 10 * 1000) {
+      // console.log(currentTime - this.enteredTime);
+      this.logOut();
+    }
+  }
+
+  getEnterData() {
+    this.enterData = JSON.parse(localStorage.getItem('enterData')!);
+    this.enteredTime = Date.parse(this.enterData.enteredTime);
   }
 
   adminAccess() {
-
-    let adminUser = prompt("username");
-
-    if (adminUser == "admin") {
-      this.adminUsername = adminUser;
-      let adminPass = prompt("password");
-      // while (adminPass != "admin") {
-      //   prompt("username");
-      // }
-      if (adminPass == "admin") {
-        this.adminPassword = adminPass;
-        this.router.navigate(['/admin-access']);
-      } else {
-        alert("password is not correct!");
-      }
-    } else {
-      alert("username is not correct!");
-    }
-
-    // getButtonTitle() {
-    //   return 'click me'
-    // }
-
-    // y() {
-    //   console.log(this.x);
-    // }
+    this.router.navigate(['/admin-access']);
   }
+  // getButtonTitle() {
+  //   return 'click me'
+  // }
+
+  // y() {
+  //   console.log(this.x);
+  // }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/sign-in']);
+  }
+
 }

@@ -20,8 +20,8 @@ const appRoutes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   // { path: 'notAuthorized', component: NotAuthorizedComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'admin-access', component: AdminAccessComponent },
-  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'admin-access', component: AdminAccessComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: '', component: AppComponent },
 ]

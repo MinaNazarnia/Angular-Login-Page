@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersListService {
+export class UsersService {
 
   login!: string;
 
@@ -15,6 +15,6 @@ export class UsersListService {
   }
 
   public getById(id: any) {
-    return this.httpClient.get("https://api.github.com/users" + '/' + `${id}`)
+    return this.httpClient.get(`https://api.github.com/users/${id}`)
   }
 }

@@ -16,14 +16,20 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.profileForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.pattern('[0][9]([0-4]|[9]){1}[0-9]{8}')]),
-      password: new FormControl('', [Validators.required, Validators.min(6)]),
+      password: new FormControl('', [Validators.required, Validators.min(6)]), // ! validator.min() does not work
       rememberMe: new FormControl(false),
     })
   }
 
   onSignin() {
-    let username = JSON.stringify(this.profileForm.get('username')?.value);
-    localStorage.setItem('username', username);
+    let enterData = {
+      enteredTime: new Date(),
+      username: JSON.stringify(this.profileForm.get('username')?.value)
+    }
+
+    // console.log(enterData.enteredTime);    
+
+    localStorage.setItem('enterData', JSON.stringify(enterData));
 
     this.router.navigate(['/dashboard']);
   }
